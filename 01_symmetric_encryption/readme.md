@@ -155,6 +155,4 @@ What have you learned by this?
 
 # Solution
 
-You can find an example implementation of the encryption/decryption as well as
-a solution to the problems stated in exercises 3 and 5 in
-[`ppmcrypt_solution.py`](ppmcrypt_solution.py).
+To be posted after the lecture.
