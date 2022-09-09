@@ -155,4 +155,4 @@ What have you learned by this?
 
 # Solution
 
-To be posted after the lecture.
+A solution is available in the repository under filename `ppmcrypt_solution.py`.
