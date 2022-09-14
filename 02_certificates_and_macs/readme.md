@@ -15,7 +15,7 @@ $ python3 rsa.py 1024 <plaintext>
 2. Take a look at the implementation to see a direct translation from the
    textbook RSA version we saw on class. Try to encrypt different messages, and especially very short ones.
 
-Remember that textbook RSA is insecure and serves only for illustration, use a
+Remember that textbook RSA is insecure and serves only for illustration, in practice you should use a
 standardized version instead.
 
 
