@@ -37,7 +37,7 @@ as described below.
 The exercise is heavily inspired on [SEED Project's PKI
 Lab](https://seedsecuritylabs.org/Labs_20.04/Crypto/Crypto_PKI/).
 
-1. Choose a hostname (e.g. twitter.com or cs.au.dk) and download the server certificate. You
+1. Choose a hostname (e.g. twitter.com) and download the server certificate. You
    can use a browser or command-line OpenSSL:
 
 ```
