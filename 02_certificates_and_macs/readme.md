@@ -37,7 +37,7 @@ as described below.
 The exercise is heavily inspired on [SEED Project's PKI
 Lab](https://seedsecuritylabs.org/Labs_20.04/Crypto/Crypto_PKI/).
 
-1. Choose a hostname (e.g. twitter.com) and download the server certificate. You
+1. Choose a hostname using only RSA certificates (e.g. cs.au.dk) and download the server certificate. You
    can use a browser or command-line OpenSSL:
 
 ```
@@ -56,7 +56,7 @@ $ openssl s_client -connect <hostname>:443 -showcerts
    local trusted storage `/etc/ssl/certs`. Copy it to the local folder you are
    working on under the name `cert_n.pem`.
 
-   Note that the Let's Encrypt chain used by many websites is [a bit more complicated](https://letsencrypt.org/certificates/).
+   Note that the Let's Encrypt chain to verify cs.au.dk is [a bit more complicated](https://letsencrypt.org/certificates/).
 
 4. Verify the certificate chains by specifying the root CA and the server
    certificate in the `openssl verify` command. For example, with 2
