@@ -56,7 +56,7 @@ $ openssl s_client -connect <hostname>:443 -showcerts
    local trusted storage `/etc/ssl/certs`. Copy it to the local folder you are
    working on under the name `cert_n.pem`.
 
-   Note that the Let's Encrypt chain used to verify cs.au.dk is [a bit more complicated](https://letsencrypt.org/certificates/).
+   Note that the Let's Encrypt chain used by many websites is [a bit more complicated](https://letsencrypt.org/certificates/).
 
 4. Verify the certificate chains by specifying the root CA and the server
    certificate in the `openssl verify` command. For example, with 2
