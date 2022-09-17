@@ -24,12 +24,3 @@ This is the command that I used:
 ```
 $ python encrypt.py plain.txt ciphertext.bin
 ```
-
-
-### Solution
-
-See [`decrypt.py`](decrypt.py) for a brute force attack over possible keys.
-Use it like this:
-```
-$ python decrypt.py 2021-09-20 ciphertext.bin decrypted.txt
-```
