@@ -16,7 +16,7 @@ We will classify authentication mechanisms described in a set of printed slides 
 
 ## Exercise 2: Weak Entropy
 
-I have a big problem: When preparing this exercise last Monday, I encrypted a
+I have a big problem: When preparing this exercise last week, I encrypted a
 very important file.  Unfortunately, I forgot to save the key, and now I cannot
 access the data anymore.  Can you help me decrypt it?
 
