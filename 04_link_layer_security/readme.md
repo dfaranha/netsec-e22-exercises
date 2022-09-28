@@ -44,17 +44,12 @@ In this exercise, we will observe how sniffing works in practice. We will take t
 ### Material
 
 You will need to have the Wireshark tool installed as per the dependencies above. You should also add your user to the group `wireshark` so that no root priviledges are required for sniffing (after adding your user to a new group, you need to logout and login again for the change to apply).
-You will also need to configure your VM network interface to allow all network traffic to be captured inside the VM.
-
-In VirtualBox, I had to change the Network Settings such that my Network Adapter was Attached to a Bridged Adapter. In Advanced, I marked Allow All in the Promiscuous Mode to be able to capture traffic from the host environment inside the VM. The screenshot below shows the settings:
-
-![VirtualBox network configuration](vb-network.png)
 
 ### Procedure
 
 We will abstract the Virtual Machine as a hostile node in a wireless network. Although the scenarios are obviously not the same, it should serve the illustration purposes we need here.
 
-1. After the settings are changed, run Wireshark inside the Virtual Machine. You should be able to start a Capture session by clicking directly on the Shark symbol, and- all traffic from the host should become immediately visible. If you are completely new to Wireshark, a nice tutorial for beginners can be found at https://www.youtube.com/watch?v=TkCSr30UojM
+1. After the settings are changed, run Wireshark. You should be able to start a Capture session by clicking directly on the Shark symbol, and- all traffic from the host should become immediately visible. If you are completely new to Wireshark, a nice tutorial for beginners can be found at https://www.youtube.com/watch?v=TkCSr30UojM
 
 2. We can perform more directed sniffing by restricting to a hostname. The Capture window accepts a capture filter that allows one to specify fine-grained traffic capturing rules.
 To show how that works, we have an HTTP server running in the same network on every IP in the range `192.168.1.2--49` or `192.168.2.2--49`, depending on your network.
