@@ -59,15 +59,15 @@ Start a new capture with `host 192.168.X.Y` as the capture filter (replace `X` a
 
 ## Exercise 3: ARP Spoofing
 
-We will use a classical ARP Spoofing attack to redirect traffic from a host in the local network to a malicious machine. Traffic redirection is a typical lower-level intermediate step in a higher-level attack such as man-in-the-middle at the network/transport layer. We will play with those in the next weeks, so today we will just focus on the link layer.
+We will use a classical ARP Spoofing attack to redirect traffic from a host in the local network to your malicious machine. Traffic redirection is a typical lower-level intermediate step in a higher-level attack such as man-in-the-middle at the network/transport layer. We will play with those in the next weeks, so today we will just focus on the link layer.
 
-1. Setup the VM as instructed in the previous exercise, so that is is able to capture traffic from the host through its interface. Notice that this does not allow the VM to capture traffic to/from other machines connected in the same local wireless network.
+1. Setup Wireshark as instructed in the previous exercise, so that is is able to capture traffic from the host through its interface. Notice that this does not allow you to capture traffic to/from other machines connected in the same local wireless network.
 
-2. Connect a mobile device to the same wireless network (`SYSSEC` or `NETSEC`) you have your host machine connected. Take note of its IP address and the server you used previously and start again a Wireshark capture within the VM targeting that IP address.
+2. Connect a mobile device to the same wireless network (`SYSSEC` or `NETSEC`) you have your host machine connected. Take note of its IP address and the server you used previously and start again a Wireshark capture targeting that IP address.
 
-3. Open the address `http://192.168.X.Y:8000/` in your mobile device. You should see the same web page as you saw in the host. Click on the Login page in the top right corner.
+3. Open the address `http://192.168.X.Y:8000/` in your mobile device. You should see the same web page as you saw in the host. 
 
-4. Run ARP spoofing to poison the ARP cache of your mobile device (using the `-t` option) with the MAC address of the VM instead of the real server. Replace the interface (mine is `enp0s3`), the IP address (of your mobile) and of the server (that you picked randomly) in the command below. Note that the `arpspoof` command takes IP addresses as arguments.
+4. Run ARP spoofing to poison the ARP cache of your mobile device (using the `-t` option) with the MAC address of your machine instead of the real server. Replace the interface (mine is `wlan0`), the IP address (of your mobile) and of the server in the command below. Note that the `arpspoof` command takes IP addresses as arguments.
 
 ```
 $ sudo arpspoof -i <interface> -t <address> <server>
