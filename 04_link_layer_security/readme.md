@@ -23,7 +23,7 @@ Note that these two networks have different addresses: `192.168.1.0/24` and `192
 A typical attack starts by placing your network interface in _monitor_ mode, and then capturing traffic from other devices.
 For attacking WPA-PSK2, a common approach is to capture the handshake packets when a new device enter the network, or alternatively to force the deauthentication of a device so it connects again and the handshake can be captured.
 
-Because not all interfaces support monitor mode and this functionality is typically not available in Virtual Machines, we already provide packet captures of the handshake for the two access points in this repository, and refer interested readers to [a tutorial](https://www.aircrack-ng.org/doku.php?id=cracking_wpa) for more details.
+Because not all interfaces support monitor mode and this functionality is typically not available in virtualized environments, we already provide packet captures of the handshake for the two access points in this repository, and refer interested readers to [a tutorial](https://www.aircrack-ng.org/doku.php?id=cracking_wpa) for more details.
 
 Your first task is to find a dictionary of common passwords in English to run the attack, and to discover the link layer address (MAC) of the access point.
 With these informations, you can then run:
