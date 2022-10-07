@@ -15,7 +15,7 @@ sudo apt install mitmproxy
 
 Our network will be slightly more complicated than the previous one. Instead of having all nodes connected to the same local network, we will keep `NETSEC` and `SYSSEC` as wireless networks, and segment the wired network to `192.168.3.0/24`. Now the Access Point (AP) serves as the _router_ between the wireless and wired networks. We will abstract the Web server running on a Raspberry Pi in the wired network on an addreess in range `192.168.3.2-49` as some Internet-facing server. A basic layout of the network is pictured below.
 
-![image](https://github.com/lenerd/au-syssec-e21-exercises/blob/master/05_network_layer_security/network-layout.png)
+![image](https://github.com/dfaranha/netsec-e22-exercises/blob/main/05_network_layer_security/network-layout.png)
 
 Connect to one of the wireless networks using the host system (you know the password) and test that you can connect to `http://192.168.3.2:8000/` using a Web browser.
 The traffic between your browser and the server is now being routed by the AP with manually inserted static routes.
