@@ -28,7 +28,7 @@ Verify that you can capture traffic between the host and `192.168.3.2` using Wir
 
 ## Exercise 1: ARP Spoofing against router
 
-_OBS_: If ARP spoofing already worked for you last week, or if ARP spoofing does not work in your platform, it is fine to skip this exercise.
+*OBS*: If ARP spoofing already worked for you last week, or if ARP spoofing does not work in your platform, it is fine to skip this exercise.
 
 Connect a mobile device to the wireless network and take note of its address, referred from here on as `mobile`.
 Select one of the addresses in the range `192.168.3.2-49` (which will be called `X` from now on).
@@ -49,7 +49,7 @@ You will notice that connectivity between the mobile device and the Web server w
 ## Exercise 2: Restoring access
 
 Let's change the configuration for traffic to be forwarded again to the Web server.
-The following configurations need to be performed in the VM to enable IP forwarding such that the VM can forward IPv4 traffic while avoiding ICMP redirects:
+The following configurations need to be performed in your machine to enable IP forwarding such that it can forward IPv4 traffic while avoiding ICMP redirects:
 
 ```
 $ sudo sysctl -w net.ipv4.ip_forward=1
@@ -58,12 +58,12 @@ $ sudo sysctl -w net.ipv4.conf.all.send_redirects=0
 ```
 
 After these configurations are put in place, the mobile device will be able to connect again to the Web server.
-Start Wireshark in the VM to check that the traffic is still intercepted there. You can use the Login option to enter credentials and observe that they are captured by Wireshark, proving that the traffic is redirected to the VM.
+Start Wireshark in your machine to check that the traffic is still intercepted there. You can use the Login option to enter credentials and observe that they are captured by Wireshark, proving that the traffic is redirected correctly.
 
 ## Exercise 3: Running mitmproxy
 
 Wireshark will capture traffic and demonstrate the power of a passive eavesdropping attacker. Let's mount a more powerful attack.
-We will run `mitmproxy` in the VM to be able to perform some processing of the captured traffic. First, configure the `iptables` firewall to send all HTTP traffic captured at port 8000 in the VM to port 8080 under control of `mitmproxy`:
+We will run `mitmproxy` in your machine to be able to perform some processing of the captured traffic. First, configure the `iptables` firewall to send all HTTP traffic captured at port 8000 in the VM to port 8080 under control of `mitmproxy`:
 
 ```
 $ sudo iptables -A FORWARD --in-interface <interface> -j ACCEPT
@@ -82,7 +82,7 @@ In this window, you can select a flow by using the arrows and pressing ENTER, wh
 ## BONUS: Manipulate traffic in mitmproxy
 
 If you reached here we have a bonus round for you. For this last exercise, we will simplify our setup to remove ARP spoofing.
-Configure the gateway in your mobile device to point directly to the IP address of the VM and stop the execution of the `arpspoof` program.
+Configure the gateway in your mobile device to point directly to the IP address of your machine and stop the execution of the ARP spoofing attack.
 
 Let's use the scripting capability of `mitmproxy` to mount an _active_ attack.
 Our simple website has a login capability, for which the credentials are not known. There should be legitimate traffic in the local network of successful login attempts, so find the correct flows in `mitmproxy` to obtain a pair of correct credentials.
