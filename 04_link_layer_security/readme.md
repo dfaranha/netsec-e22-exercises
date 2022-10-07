@@ -13,6 +13,14 @@ sudo apt install aircrack-ng dsniff wireshark
 
 Wireshark will ask about users without priviledges being able to capture packets, for which you should answer affirmatively.
 
+### Windows / WSL
+
+At the time of writing, ARP spoofing does not play well with the WSL virtualized network interface.
+Install native versions of Wireshark and an [ARP spoofer](https://github.com/alandau/arpspoof).
+
+### MacOS
+
+Install the packages above using `homebrew`.
 
 ## Exercise 1: Dictionary Attack
 
