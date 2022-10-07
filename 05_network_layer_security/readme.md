@@ -28,7 +28,7 @@ Verify that you can capture traffic between the host and `192.168.3.2` using Wir
 
 ## Exercise 1: ARP Spoofing against router
 
-*OBS*: If ARP spoofing already worked for you last week, or if ARP spoofing does not work in your platform, it is fine to skip this exercise.
+*OBS*: If ARP spoofing already worked for you last week, or if ARP spoofing does not work in your platform, it is fine to skip to exercise 3.
 
 Connect a mobile device to the wireless network and take note of its address, referred from here on as `mobile`.
 Select one of the addresses in the range `192.168.3.2-49` (which will be called `X` from now on).
@@ -63,6 +63,8 @@ After these configurations are put in place, the mobile device will be able to c
 Start Wireshark in your machine to check that the traffic is still intercepted there. You can use the Login option to enter credentials and observe that they are captured by Wireshark, proving that the traffic is redirected correctly.
 
 ## Exercise 3: Running mitmproxy
+
+Stop your ARP spoofing attack and configure your mobile device to use your machine as the router/gateway.
 
 Wireshark will capture traffic and demonstrate the power of a passive eavesdropping attacker. Let's mount a more powerful attack.
 We will run `mitmproxy` in your machine to be able to perform some processing of the captured traffic. First, configure the `iptables` firewall to send all HTTP traffic captured at port 8000 in your machine to port 8080 under control of `mitmproxy`:
