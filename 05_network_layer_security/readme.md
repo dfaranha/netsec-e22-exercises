@@ -11,30 +11,32 @@ You should begin by installing required dependencies. Make sure you have the Wir
 sudo apt install mitmproxy
 ```
 
+### Windows / WSL
+
+You can try using `mitmproxy` from WSL, but if the virtualzed network interface gives you trouble, switch to the native version.
+
 ### Network Layout
 
 Our network will be slightly more complicated than the previous one. Instead of having all nodes connected to the same local network, we will keep `NETSEC` and `SYSSEC` as wireless networks, and segment the wired network to `192.168.3.0/24`. Now the Access Point (AP) serves as the _router_ between the wireless and wired networks. We will abstract the Web server running on a Raspberry Pi in the wired network on an addreess in range `192.168.3.2-49` as some Internet-facing server. A basic layout of the network is pictured below.
 
 ![image](https://github.com/dfaranha/netsec-e22-exercises/blob/main/05_network_layer_security/network-layout.png)
 
-Connect to one of the wireless networks using the host system (you know the password) and test that you can connect to `http://192.168.3.2:8000/` using a Web browser.
+Connect your machine to one of the wireless networks using the host system (you know the password) and test that you can connect to `http://192.168.3.2:8000/` using a Web browser.
 The traffic between your browser and the server is now being routed by the AP with manually inserted static routes.
 
-Start the VM and make sure that you can `ping 192.168.3.2` and access the HTTP address above in the VM.
 Verify that you can capture traffic between the host and `192.168.3.2` using Wireshark running in the VM, to confirm that the interface is functional in bridged mode.
 
 ## Exercise 1: ARP Spoofing against router
 
+_OBS_: If ARP spoofing already worked for you last week, or if ARP spoofing does not work in your platform, it is fine to skip this exercise.
+
 Connect a mobile device to the wireless network and take note of its address, referred from here on as `mobile`.
 Select one of the addresses in the range `192.168.3.2-49` (which will be called `X` from now on).
-Try to impersonate the Web server by running the ARP spoofing attack inside the VM:
+Try to impersonate the Web server by running the ARP spoofing attack inside in your machine:
 
 ```
 sudo arpspoof -i <interface> -t <mobile> 192.168.3.X
 ```
-
-Contrary to the last session, you can still access the Web server `http://192.168.3.X:8000/` in your mobile. This is possible because ARP spoofing is ineffective here, since ARP does not resolve in the network `192.168.3.0` to which packets are _routed_. This will also have the side-effect that traffic directed towards `192.168.3.X` will be passed to the VM through the link layer and fix an [issue with VirtualBox](https://security.stackexchange.com/questions/197453/mitm-using-arp-spoofing-with-kali-linux-running-on-virtualbox-with-bridged-wifi).
-However, we can still impersonate the router.
 
 Choose randomly one address in the IP range `192.168.1/2.1-49` (depending if you are connected to `SYSSEC` or `NETSEC`) and manually configure this address as the gateway in your mobile device. You can use the same IP address you had before from DHCP for your mobile device. Now run the ARP spoofing attack below:
 
