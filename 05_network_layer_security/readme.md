@@ -3,7 +3,7 @@
 
 ## Preliminaries
 
-You should begin by installing required dependencies. Make sure you have the Wireshark setup as described last week working with a VM in bridged mode.
+You should begin by installing required dependencies. Make sure you have the packages installed and the Wireshark setup working in your machine as described last week.
 
 ### Ubuntu 21.04 / Debian 11
 
@@ -24,7 +24,7 @@ Our network will be slightly more complicated than the previous one. Instead of 
 Connect your machine to one of the wireless networks using the host system (you know the password) and test that you can connect to `http://192.168.3.2:8000/` using a Web browser.
 The traffic between your browser and the server is now being routed by the AP with manually inserted static routes.
 
-Verify that you can capture traffic between the host and `192.168.3.2` using Wireshark running in the VM, to confirm that the interface is functional in bridged mode.
+Verify that you can capture traffic between the host and `192.168.3.2` using Wireshark, to confirm that the interface is functional in bridged mode.
 
 ## Exercise 1: ARP Spoofing against router
 
@@ -44,7 +44,7 @@ Choose randomly one address in the IP range `192.168.1/2.1-49` (depending if you
 sudo arpspoof -i <interface> -t <mobile> <gateway>
 ```
 
-You will notice that connectivity between the mobile device and the Web server will stop, since traffic will be redirected to the VM and not be routed further.
+You will notice that connectivity between the mobile device and the Web server will stop, since traffic will be redirected to your machine and not be routed further.
 
 ## Exercise 2: Restoring access
 
@@ -63,12 +63,13 @@ Start Wireshark in your machine to check that the traffic is still intercepted t
 ## Exercise 3: Running mitmproxy
 
 Wireshark will capture traffic and demonstrate the power of a passive eavesdropping attacker. Let's mount a more powerful attack.
-We will run `mitmproxy` in your machine to be able to perform some processing of the captured traffic. First, configure the `iptables` firewall to send all HTTP traffic captured at port 8000 in the VM to port 8080 under control of `mitmproxy`:
+We will run `mitmproxy` in your machine to be able to perform some processing of the captured traffic. First, configure the `iptables` firewall to send all HTTP traffic captured at port 8000 in your machine to port 8080 under control of `mitmproxy`:
 
 ```
 $ sudo iptables -A FORWARD --in-interface <interface> -j ACCEPT
 $ sudo iptables -t nat -A PREROUTING -i <interface> -p tcp --dport 8000 -j REDIRECT --to-port 8080
 ```
+If you are not running `iptables`, try to find a way to do the same in your firewall.
 
 Now run `mitmproxy` in _transparent_ mode:
 
