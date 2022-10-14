@@ -36,7 +36,7 @@ In your machine, let's change the configuration for traffic to be forwarded.
 
 **Observation**: If you are running Mac OS, look at the [official mitmproxy instructions](https://docs.mitmproxy.org/stable/howto-transparent/). If you are running Windows, there is [information online](https://stackoverflow.com/questions/61590951/how-do-i-set-up-transparent-proxy-on-windows-proxy-machine) pointing to a handy [Python script](https://github.com/mitmproxy/mitmproxy/blob/main/mitmproxy/platform/windows.py) that sets up the configuration.
 
-For Linux, the following configurations need to be performed to enable IP forwarding such that the VM can forward IPv4 traffic while avoiding ICMP redirects:
+For Linux, the following configurations need to be performed to enable IP forwarding such that your machine can forward IPv4 traffic while avoiding ICMP redirects:
 
 ```
 $ sudo sysctl -w net.ipv4.ip_forward=1
@@ -48,7 +48,7 @@ It might be necessary to also set the following, more specific setting, where `<
 $ sudo sysctl -w net.ipv4.conf.<interface>.send_redirects=0
 ```
 
-We will run `mitmproxy` to perform some processing of the captured traffic. First, configure the `iptables` firewall to send all HTTP traffic captured at ports `80` and `443` in the VM to port `8080` under control of `mitmproxy`:
+We will run `mitmproxy` to perform some processing of the captured traffic. First, configure the `iptables` firewall to send all HTTP traffic captured at ports `80` and `443` in your machine to port `8080` under control of `mitmproxy`:
 
 ```
 $ sudo iptables -A FORWARD --in-interface <interface> -j ACCEPT
