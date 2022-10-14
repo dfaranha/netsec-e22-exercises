@@ -1,0 +1,8 @@
+#!/bin/bash
+for i in `seq 49`; do
+    ip route add 192.168.3.0/24 via 192.168.1.$i
+    for j in `seq 2 49`; do
+        python client.py 192.168.3.$j 8000
+    done
+    ip route del 192.168.3.0/24 via 192.168.1.$i
+done
