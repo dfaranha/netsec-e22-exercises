@@ -53,6 +53,7 @@ We will run `mitmproxy` to perform some processing of the captured traffic. Firs
 ```
 $ sudo iptables -A FORWARD --in-interface <interface> -j ACCEPT
 $ sudo iptables -t nat -A PREROUTING -i <interface> -p tcp --dport 80 -j REDIRECT --to-port 8080
+$ sudo iptables -t nat -A PREROUTING -i <interface> -p tcp --dport 8000 -j REDIRECT --to-port 8080
 $ sudo iptables -t nat -A PREROUTING -i <interface> -p tcp --dport 443 -j REDIRECT --to-port 8080
 ```
 
