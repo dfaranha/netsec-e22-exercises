@@ -12,7 +12,7 @@ As previously, there are two wireless networks (`NETSEC` and `SYSSEC`), and the 
 The Access Point (AP) serves as the _router_ between the wireless and the wired network.
 The Web server runs on a Raspberry Pi in the wired network, with IP address `192.168.3.2`, and abstracts a machine running on the Internet, to/from which traffic is routed by intermediate nodes.
 
-![image](https://github.com/dfaranha/netsec-e22-exercises/blob/master/06_transport_layer_security/network-layout.png)
+![image](https://github.com/dfaranha/netsec-e22-exercises/blob/main/06_transport_layer_security/network-layout.png)
 
 Connect to one of the wireless networks using the host system (you know the password) and test that you can connect to `http://192.168.3.2/` using a Web browser (this time we are using the default port `80`).
 The traffic between your browser and the server is now being routed by the AP with manually inserted static routes.
